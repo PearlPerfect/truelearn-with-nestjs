@@ -15,13 +15,17 @@ export class Auth {
   @Prop({ required: true })
   password: string;
   @Prop()
-  phoneNumber: number;
+  phoneNumber: string;
   @Prop({ enum: Gender })
   gender: Gender;
   @Prop({ enum: Role, default: Role.USER })
   role: Role;
   @Prop()
   isVerified:boolean
+  @Prop({ default: true })
+  isActive: boolean;
+  @Prop()
+  refreshToken: string;
 }
 
 export const AuthSchema = SchemaFactory.createForClass(Auth);

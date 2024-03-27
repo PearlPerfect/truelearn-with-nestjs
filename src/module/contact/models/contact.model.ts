@@ -6,15 +6,15 @@ export type ContactDocument = HydratedDocument<Contact>;
 
 @Schema()
 export class Contact {
-  @Prop()
+  @Prop({required: true})
   firstName: string;
-  @Prop()
+  @Prop({required: true})
   lastName: string;
-  @Prop()
+  @Prop({required: true})
   email: string;
-  @Prop()
-  phoneNumber: number;
-  @Prop()
+  @Prop({required: true})
+  phoneNumber: string;
+  @Prop({required: true})
   message:string
 
 
