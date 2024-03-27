@@ -1,7 +1,9 @@
-import { AuthDocument } from '../../models/auth.model';
+import { TeacherDocument } from "src/module/teachers/models/teachers.model";
+import { UserDocument } from "src/module/user/models/user.model";
+
 
 export class AuthUser {
-  id: string | AuthDocument;
+  id: string | TeacherDocument | UserDocument;
   fullName: string;
   email: string;
 }

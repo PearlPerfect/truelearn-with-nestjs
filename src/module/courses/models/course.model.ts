@@ -1,14 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, SchemaTypes } from 'mongoose';
 
 export type CourseDocument = HydratedDocument<Course>;
 @Schema()
 export class Course {
-  @Prop()
-  topic: string;
-  @Prop()
-  subTopic: string;
-  @Prop()
+  @Prop({type: SchemaTypes.ObjectId, ref: 'Category',required: true})
+  category: string;
+  @Prop({required: true})
   specialty: string;
 }
 
