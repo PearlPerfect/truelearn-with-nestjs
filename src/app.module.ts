@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AuthController } from './module/Authentication/controllers/auth.controller';
+import { AuthController } from './module/authentication/controllers/auth.controller';
 import { AuthService } from './module/authentication/services/auth.service';
 import { GoogleStrategy } from './core/strategies/google.strategy';
 import { MongooseModule } from '@nestjs/mongoose';
 import routes from './route';
-import { AuthModule } from './module/Authentication/modules/auth.module';
+import { AuthModule } from './module/authentication/modules/auth.module';
 import { ContactModule } from './module/contact/modules/contact.module';
 import { CategoryModule } from './module/category/modules/category.module';
 import { CourseModule } from './module/courses/modules/course.module';

@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, SchemaTypes } from 'mongoose';
-import { AuthDocument } from 'src/module/Authentication/model/auth.model';
+import { AuthDocument } from 'src/module/authentication/model/auth.model';
 import { CategoryDocument } from 'src/module/category/models/category.model';
 
 export type CourseDocument = HydratedDocument<Course>;

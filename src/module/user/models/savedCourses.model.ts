@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, SchemaTypes } from "mongoose";
-import { AuthDocument } from "src/module/Authentication/model/auth.model";
+import { AuthDocument } from "src/module/authentication/model/auth.model";
 import { CourseDocument } from "src/module/courses/models/course.model";
 
 
