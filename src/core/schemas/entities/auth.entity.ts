@@ -1,4 +1,4 @@
-import { AuthDocument } from "src/module/Authentication/model/auth.model";
+import { AuthDocument } from "src/module/authentication/model/auth.model";
 import { Role } from "../enum/auth.enum";
 
 

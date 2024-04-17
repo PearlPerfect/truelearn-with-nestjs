@@ -8,7 +8,6 @@ import {
   HttpException,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from '../services/auth.service';
 import {
   AuthResponse,
   GoogleAuthResponse,
@@ -16,6 +15,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { LoginDto } from '../../../core/schemas/dtos/login.dto';
 import { CreateUserDto } from 'src/core/schemas/dtos/register.dto';
+import { AuthService } from '../services/auth.service';
 
 @ApiTags('auth')
 @Controller('')

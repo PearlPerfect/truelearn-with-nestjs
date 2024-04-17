@@ -2,7 +2,7 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 import { ServiceException } from 'src/core/exceptions/service.exception';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { Auth } from 'src/module/Authentication/model/auth.model';
+import { Auth } from 'src/module/authentication/model/auth.model';
 import { GetProfileResponse } from 'src/core/schemas/entities/profile.entity';
 import { CreateUserDto } from 'src/core/schemas/dtos/register.dto';
 import { AuthUser } from 'src/core/schemas/entities/auth.entity';
