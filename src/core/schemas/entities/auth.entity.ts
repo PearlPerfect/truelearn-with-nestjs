@@ -1,11 +1,12 @@
-import { TeacherDocument } from "src/module/teachers/models/teachers.model";
-import { UserDocument } from "src/module/user/models/user.model";
+import { AuthDocument } from "src/module/Authentication/model/auth.model";
+import { Role } from "../enum/auth.enum";
 
 
 export class AuthUser {
-  id: string | TeacherDocument | UserDocument;
+  id: string | AuthDocument;
   fullName: string;
   email: string;
+  role: Role;
 }
 export class UpdatedUserResponse {
   message: string;
@@ -15,10 +16,12 @@ export class AuthResponse extends AuthUser {
   refreshToken: string;
 }
 
-export class GoogleAuthResponse{
-    message: string;
-    email: string;
-    fullName: string;
-    image: string;
-    accessToken: string
+export class GoogleAuthResponse {
+  message: string;
+  email: string;
+  fullName: string;
+  image: string;
+  accessToken: string;
 }
+
+

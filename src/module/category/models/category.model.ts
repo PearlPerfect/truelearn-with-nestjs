@@ -1,12 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, SchemaTypes } from 'mongoose';
-import { CourseCategory } from '../schemas/enums/category.enum';
 
 export type CategoryDocument = HydratedDocument<Category>;
-@Schema()
+@Schema({timestamps: true})
 export class Category {
   @Prop({required: true})
-  category: CourseCategory;
+  category: string;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

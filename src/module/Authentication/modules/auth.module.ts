@@ -6,7 +6,7 @@ import { AuthController } from '../controllers/auth.controller';
 import { JwtStrategy } from 'src/core/strategies/jwt.strategy';
 import jwtConstants from 'src/core/config/constants';
 import { GoogleStrategy } from 'src/core/strategies/google.strategy';
-import { AuthService } from '../Services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Auth, AuthSchema } from '../model/auth.model';
 
 @Module({
@@ -20,6 +20,5 @@ import { Auth, AuthSchema } from '../model/auth.model';
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, GoogleStrategy],
-//   exports: [AuthService],
 })
 export class AuthModule {}

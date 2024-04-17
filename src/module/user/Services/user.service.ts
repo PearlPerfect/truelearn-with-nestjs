@@ -2,15 +2,27 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 import { ServiceException } from 'src/core/exceptions/service.exception';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-import { User } from 'src/module/user/models/user.model';
+import { Auth } from 'src/module/Authentication/model/auth.model';
+import { GetProfileResponse } from 'src/core/schemas/entities/profile.entity';
+import { CreateUserDto } from 'src/core/schemas/dtos/register.dto';
+import { AuthUser } from 'src/core/schemas/entities/auth.entity';
+import { IUser } from 'src/core/schemas/interfaces/auth.interface';
+import { UpdateProfileDto } from 'src/core/schemas/dtos/update.dto';
+import { UserCourses } from '../models/user.model';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name) private userModel: mongoose.Model<User>,
-    private jwtService: JwtService,
-    private readonly configService: ConfigService,
+    @InjectModel(UserCourses.name) private userModel: mongoose.Model<UserCourses>,
+    @InjectModel(Auth.name) private authModel: mongoose.Model<Auth>,
   ) {}
+  
  
+
+async getUserProfile(id: string): Promise<any> {
+   
+  }
+
+  async updateProfileInfo(id: string, updateData: UpdateProfileDto) {
+    
+  }
 }

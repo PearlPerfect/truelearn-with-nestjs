@@ -11,12 +11,12 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { LoginDto } from '../../../core/schemas/dtos/login.dto';
-import { User } from 'src/module/user/models/user.model';
-import { AuthDocument } from '../model/auth.model';
+import { Auth, AuthDocument } from '../model/auth.model';
+import { CreateUserDto } from 'src/core/schemas/dtos/register.dto';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(User.name) private authModel: mongoose.Model<User>,
+    @InjectModel(Auth.name) private authModel: mongoose.Model<Auth>,
     private jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}
@@ -37,6 +37,30 @@ export class AuthService {
     };
     return response;
   }
+
+  async register(signUpDto: CreateUserDto): Promise<AuthResponse> {
+    return await this.authModel
+      .findOne({ email: signUpDto.email })
+      .then(async (user) => {
+        if (user) {
+          throw new ServiceException(
+            'Email already in use, try another one',
+            HttpStatus.BAD_REQUEST,
+          );
+        }
+        const newAuthModel = new this.authModel(signUpDto);
+        const newUser = await newAuthModel.save();
+        const response: AuthUser = {
+          id: newUser.id,
+          fullName: newUser.fullName,
+          email: newUser.email,
+          role: newUser.role,
+        };
+        // return response
+        return this.signUser(newUser);
+      });
+  }
+
   async login(loginDto: LoginDto): Promise<AuthResponse> {
     const user = await this.authModel.findOne({ email: loginDto.email });
     if (!user) {
@@ -59,6 +83,7 @@ export class AuthService {
       id: user.id,
       email: user.email,
       fullName: user.fullName,
+      role: user.role,
     };
     const accessToken = this.jwtService.sign(payload, {
       expiresIn: '1d',
@@ -100,6 +125,7 @@ export class AuthService {
       id: user.id,
       email: user.email,
       fullName: user.fullName,
+      role: user.role,
     };
     const newAccessToken = this.jwtService.sign(newPayload, {
       expiresIn: '15m',
